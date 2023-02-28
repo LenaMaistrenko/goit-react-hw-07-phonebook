@@ -1,0 +1,17 @@
+.filterlabel {
+  font-size: 20px;
+  font-weight: 800;
+  color: darkslategrey;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.filterinput {
+  font-size: 17px;
+  font-weight: 400;
+  color: darkslategrey;
+  border: 1px solid #4169e1;
+  margin-left: 15px;
+}
