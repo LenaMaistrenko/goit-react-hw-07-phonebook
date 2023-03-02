@@ -5,6 +5,9 @@ import { addFilter } from 'redux/filterSlice';
 export function Filter() {
   const dispatch = useDispatch();
   const filter = useSelector(state => state.filter);
+  const handleFilterChange = e => {
+    dispatch(addFilter(e.target.value));
+  };
   return (
     <label className={css.filterlabel}>
       FIND CONTACTS BY NAME
@@ -13,7 +16,7 @@ export function Filter() {
         type="text"
         name="filter"
         value={filter}
-        onChange={e => dispatch(addFilter(e.currentTarget.value))}
+        onChange={handleFilterChange}
       />
     </label>
   );

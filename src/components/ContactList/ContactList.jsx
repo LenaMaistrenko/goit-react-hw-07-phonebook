@@ -1,7 +1,7 @@
 import css from '../ContactList/ContactList.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/contactsOperations';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import { useEffect } from 'react';
 
 export function ContactList() {
@@ -10,9 +10,16 @@ export function ContactList() {
     dispatch(fetchContacts());
   }, [dispatch]);
   const contacts = useSelector(selectContacts);
+  console.log(contacts);
+  const filter = useSelector(selectFilter);
+  const filterContacts = contacts?.filter(contact =>
+    contact.name.toLowerCase().trim().includes(filter.toLowerCase())
+  );
+  console.log(filterContacts);
+
   return (
     <ul className={css.contactList}>
-      {contacts?.map(item => (
+      {filterContacts?.map(item => (
         <li className={css.contactItem} key={item.id}>
           {item.name}
           <span>{item.number}</span>
